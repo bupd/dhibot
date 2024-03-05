@@ -14,12 +14,18 @@ const puppetScript = async (username) => {
     executablePath:
       process.env.NODE_ENV === "production"
         ? process.env.PUPPETEER_EXECUTABLE_PATH
-        : puppeteer.executablePath,
+        : puppeteer.executablePath(),
   });
   const page = await browser.newPage();
 
   // Navigate the page to a URL
-  await page.goto("https://srmgroup.dhi-edu.com/srmgroup_srmeec/");
+  await page.goto("https://www.google.com");
+
+  const pageTitle = await page.title();
+
+  jsonData["title"] = pageTitle;
+
+  return jsonData;
 
   // Set screen size
   await page.setViewport({ width: 1080, height: 1024 });
