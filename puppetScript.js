@@ -6,6 +6,7 @@ const puppetScript = async (username) => {
   var jsonData = {};
   // delete this ASAP
   console.log(process.env.PUPPETEER_EXECUTABLE_PATH);
+  console.log(process.env.PUPPETEER_EXECUTABLE_PATH === "production");
   const browser = await puppeteer.launch({
     args: [
       "--no-sandbox",
