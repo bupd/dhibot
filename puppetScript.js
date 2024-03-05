@@ -1,9 +1,21 @@
 const puppeteer = require("puppeteer");
+require("dotenv").config();
 
 const puppetScript = async (username) => {
   // Launch the browser and open a new blank page
   var jsonData = {};
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--single-process",
+      "--no-zygote",
+    ],
+    executablePath:
+      process.env.NODE_ENV === "production"
+        ? process.env.PUPPETEER_EXECUTABLE_PATH
+        : puppeteer.executablePath,
+  });
   const page = await browser.newPage();
 
   // Navigate the page to a URL
@@ -18,7 +30,6 @@ const puppetScript = async (username) => {
     });
   }
 
-
   await page.waitForSelector("#username");
   await page.type("#username", username);
   await page.waitForSelector("#password");
@@ -26,7 +37,6 @@ const puppetScript = async (username) => {
 
   await page.waitForSelector("#kc-login");
   await page.hover("#kc-login");
-
 
   await page.click("#kc-login");
   // const element = await page.waitForSelector("div > ");
@@ -58,7 +68,6 @@ const puppetScript = async (username) => {
     const options = await selectElement.$$eval("option", (options) =>
       options.map((option) => option.value),
     );
-
 
     const optionName = await selectElement.$$eval("option", (options) =>
       options.map((option) => option.textContent.trim()),
