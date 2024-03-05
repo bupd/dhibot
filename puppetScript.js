@@ -4,6 +4,8 @@ require("dotenv").config();
 const puppetScript = async (username) => {
   // Launch the browser and open a new blank page
   var jsonData = {};
+  // delete this ASAP
+  console.log(process.env.PUPPETEER_EXECUTABLE_PATH);
   const browser = await puppeteer.launch({
     args: [
       "--no-sandbox",
@@ -16,6 +18,7 @@ const puppetScript = async (username) => {
         ? process.env.PUPPETEER_EXECUTABLE_PATH
         : puppeteer.executablePath(),
   });
+
   const page = await browser.newPage();
 
   // Navigate the page to a URL
