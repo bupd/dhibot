@@ -40,18 +40,19 @@ app.get("/scrape", async (req, res) => {
     };
   }
   try {
-    let browser = await puppeteer.launch(options);
-
-    let page = await browser.newPage();
-
-    await page.goto("https://www.google.com");
-
-    res.send(await page.title());
-    // const { username } = req.query;
+    // let browser = await puppeteer.launch(options);
     //
-    // const jsonData = await puppetScript(username);
+    // let page = await browser.newPage();
     //
-    // res.json(jsonData);
+    // await page.goto("https://www.google.com");
+    //
+    // res.send(await page.title());
+    
+    const { username } = req.query;
+
+    const jsonData = await puppetScript(username);
+
+    res.json(jsonData);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
