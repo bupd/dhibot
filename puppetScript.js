@@ -23,13 +23,13 @@ const puppetScript = async (username) => {
   const page = await browser.newPage();
 
   // Navigate the page to a URL
-  await page.goto("https://www.google.com");
+  await page.goto("https://srmgroup.dhi-edu.com/srmgroup_srmeec/");
 
-  const pageTitle = await page.title();
-
-  jsonData["title"] = pageTitle;
-
-  return jsonData;
+  // const pageTitle = await page.title();
+  //
+  // jsonData["title"] = pageTitle;
+  //
+  // return jsonData;
 
   // Set screen size
   await page.setViewport({ width: 1080, height: 1024 });
