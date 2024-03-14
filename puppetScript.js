@@ -1,4 +1,4 @@
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-core");
 require("dotenv").config();
 
 const puppetScript = async (username) => {
@@ -6,9 +6,9 @@ const puppetScript = async (username) => {
   var jsonData = {};
   // delete this ASAP
   const browser = await puppeteer.launch({
-    args: [
-      "--no-sandbox",
-    ],
+    // args: [
+    //   "--no-sandbox",
+    // ],
     executablePath:
       process.env.NODE_ENV === "production"
         ? process.env.PUPPETEER_EXECUTABLE_PATH
