@@ -1,4 +1,4 @@
-const puppeteer = require("puppeteer-core");
+const puppeteer = require("puppeteer");
 require("dotenv").config();
 
 const puppetScript = async (username) => {
@@ -6,13 +6,13 @@ const puppetScript = async (username) => {
   var jsonData = {};
   // delete this ASAP
   const browser = await puppeteer.launch({
-    // args: [
-    //   "--no-sandbox",
-    // ],
-    executablePath:
-      process.env.NODE_ENV === "production"
-        ? process.env.PUPPETEER_EXECUTABLE_PATH
-        : puppeteer.executablePath(),
+    args: [
+      "--no-sandbox",
+    ],
+  //   executablePath:
+  //     process.env.NODE_ENV === "production"
+  //       ? process.env.PUPPETEER_EXECUTABLE_PATH
+  //       : puppeteer.executablePath(),
   });
 
   const page = await browser.newPage();
