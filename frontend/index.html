@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Login</title>
+  </head>
+
+  <body>
+    <header
+      class="max-w-sm mx-auto h-96 my-auto flex justify-center items-center text-center"
+    >
+      <div class="my-auto">
+        <div class="pb-3 text-2xl font-bold font-mono">
+          <h1 class="text-center">Attendance Checker</h1>
+          <h3
+            class="text-center p-5 text-base text-gray-400 text-sm font-light max-w-sm"
+          >
+            Please Enter your Email to Check the Attendance:
+          </h3>
+        </div>
+        <div class="form">
+          <form onsubmit="return getAttendanceData()">
+            <div class="info">
+              <input
+                class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                type="email"
+                placeholder="Email"
+                id="email"
+              />
+              <br />
+            </div>
+            <div
+              class="rounded-full bg-gradient-to-r from-indigo-500 to-pink-500 w-fit mx-auto px-4 py-2 text-white font-bold font-mono my-5"
+            >
+              <button class="btn-primary" type="submit">Check Now 🚀</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </header>
+
+    <script>
+      async function getAttendanceData() {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        // Retrieve the email input element
+        const emailElement = document.getElementById("email");
+
+        // Retrieve the value from the email input
+        const emailValue = emailElement.value;
+
+        // Log the email value (for debugging)
+        console.log(emailValue);
+
+        // Fetch data from the server
+        const response = await fetch(
+          `https://us-central1-lunar-analyzer-415415.cloudfunctions.net/function-hello-world?name=${emailValue.toString()}`,
+        );
+
+        // Parse the response as JSON
+
+        // Log the data (for debugging)
+        console.log(response.toString());
+
+        // Optional: You can handle the data here, such as updating the UI based on the response
+      }
+    </script>
+  </body>
+</html>
