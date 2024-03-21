@@ -54,14 +54,40 @@
         console.log(emailValue);
 
         // Fetch data from the server
-        const response = await fetch(
-          `https://us-central1-lunar-analyzer-415415.cloudfunctions.net/function-hello-world?name=${emailValue.toString()}`,
-        );
-
-        // Parse the response as JSON
-
-        // Log the data (for debugging)
-        console.log(response.toString());
+        fetch(
+          "https://us-central1-lunar-analyzer-415415.cloudfunctions.net/function-hello-world?name=bupdprasanth@gmail.com",
+          {
+            method: "GET",
+            headers: {
+              accept:
+                "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+              "accept-language":
+                "en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,ta;q=0.6",
+              "cache-control": "no-cache",
+              pragma: "no-cache",
+              "sec-ch-ua":
+                '"Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122"',
+              "sec-ch-ua-mobile": "?0",
+              "sec-ch-ua-platform": '"Linux"',
+              "sec-fetch-dest": "document",
+              "sec-fetch-mode": "navigate",
+              "sec-fetch-site": "cross-site",
+              "sec-fetch-user": "?1",
+              "upgrade-insecure-requests": "1",
+            },
+            mode: "cors",
+            credentials: "omit",
+            referrerPolicy: "strict-origin-when-cross-origin",
+          },
+        )
+          .then((response) => {
+            console.log(response);
+            // Handle response here
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            // Handle errors here
+          });
 
         // Optional: You can handle the data here, such as updating the UI based on the response
       }
