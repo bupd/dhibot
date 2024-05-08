@@ -6,13 +6,12 @@ const puppetScript = async (username) => {
   var jsonData = {};
   // delete this ASAP
   const browser = await puppeteer.launch({
-    args: [
-      "--no-sandbox",
-    ],
-  //   executablePath:
-  //     process.env.NODE_ENV === "production"
-  //       ? process.env.PUPPETEER_EXECUTABLE_PATH
-  //       : puppeteer.executablePath(),
+    args: ["--no-sandbox"],
+    //   executablePath:
+    //     process.env.NODE_ENV === "production"
+    //       ? process.env.PUPPETEER_EXECUTABLE_PATH
+    //       : puppeteer.executablePath(),
+    headless: false,
   });
 
   const page = await browser.newPage();
